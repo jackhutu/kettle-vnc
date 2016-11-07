@@ -30,9 +30,10 @@ RUN wget --progress=dot:giga \
 # We can only add KETTLE_HOME to the PATH variable now
 # as the path gets eveluated - so it must already exist
 ENV KETTLE_HOME=$PENTAHO_HOME/data-integration \
-    PATH=$KETTLE_HOME:$PATH \
-    VNC_PW "vncpassword" \
-    DISPLAY :0
+    PATH=$KETTLE_HOME:$PATH
+    
+ENV VNC_PW "vncpassword"
+ENV DISPLAY :0
 
 #升级仓库，安装xvfb x11vnc fluxbox
 RUN apt-get update -y &&  apt-get -y install xvfb x11vnc fluxbox xdotool  git git-core ca-certificates && \
@@ -58,7 +59,7 @@ RUN apt-get autoclean && \
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expose Carte Server # Expose VNC port，5900为VNC客户端登录的端口，8787为novnc
-EXPOSE ${CARTE_PORT} 5900 8787
+EXPOSE 8080 5900 8787
 
 # As we cannot use env variable with the entrypoint and cmd instructions
 # we set the working directory here to a convenient location
