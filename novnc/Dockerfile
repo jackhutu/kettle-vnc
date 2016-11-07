@@ -6,7 +6,7 @@ ENV VNC_PW "vncpassword"
 ENV DISPLAY :0
 
 #升级仓库，安装xvfb x11vnc fluxbox
-RUN apt-get update -y &&  apt-get -y install xvfb x11vnc fluxbox xdotool  git git-core ca-certificates && \
+RUN apt-get update -y &&  apt-get -y install supervisor xvfb x11vnc fluxbox xdotool  git git-core ca-certificates && \
     mkdir ~/.vnc && \
     touch ~/.vnc/passwd
 
@@ -69,3 +69,6 @@ WORKDIR $KETTLE_HOME
 
 # Run Service
 CMD ["/usr/bin/supervisord"]
+
+
+#CMD ["./carte.sh", "0.0.0.0", "8181"]
