@@ -67,8 +67,9 @@ EXPOSE 8080 5900 8787
 # We set it to KETTLE_HOME so we can start carte easily
 WORKDIR $KETTLE_HOME
 
+USER root
+
 # Run Service
 CMD ["/usr/bin/supervisord"]
-
 
 #CMD ["./carte.sh", "0.0.0.0", "8181"]
