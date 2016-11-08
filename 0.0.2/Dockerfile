@@ -28,8 +28,8 @@ RUN echo $TZ > /etc/timezone && \
     apt-get upgrade --yes
 
 # Download PDI
-RUN /usr/bin/wget \
-    --progress=dot:giga \
+RUN  mkdir ${PENTAHO_HOME} && \
+    wget --progress=dot:giga \
     http://downloads.sourceforge.net/project/pentaho/Data%20Integration/${PDI_RELEASE}/pdi-ce-${PDI_VERSION}.zip \
     -O /tmp/pdi-ce-${PDI_VERSION}.zip && \
     /usr/bin/unzip -q /tmp/pdi-ce-${PDI_VERSION}.zip -d  $PENTAHO_HOME && \
