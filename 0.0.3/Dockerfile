@@ -8,15 +8,16 @@ ENV VNC_PW "vncpassword"
 RUN apt-get update && \
     apt-get install -y supervisor \
     xfce4 xfce4-goodies \
-    x11vnc xvfb
-
-# config timezone
-RUN echo $TZ > /etc/timezone && \
-    dpkg-reconfigure --frontend noninteractive tzdata && \
+    x11vnc xvfb && \
     apt-get upgrade --yes && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
+
+# config timezone
+#RUN echo $TZ > /etc/timezone && \
+#    dpkg-reconfigure --frontend noninteractive tzdata && \
+
 
 #配置VNC密码
 RUN mkdir ~/.vnc && \
