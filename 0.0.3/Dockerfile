@@ -17,9 +17,11 @@ ENV TZ "Asia/Shanghai"
 RUN echo $TZ > /etc/timezone && \
     dpkg-reconfigure --frontend noninteractive tzdata
 
-# 安装桌面和vnc服务,删除不必要的软件和Apt缓存包列表
+# 安装supervisor, 桌面xfce4, 中文字体, 和vnc服务, 删除不必要的软件和Apt缓存包列表
 RUN apt-get update && \
-    apt-get install -y supervisor \
+    apt-get install -y --force-yes --no-install-recommends \
+    supervisor \
+    fonts-wqy-microhei ttf-wqy-zenhei \
     xfce4 xfce4-goodies \
     x11vnc xvfb && \
     apt-get autoclean && \
