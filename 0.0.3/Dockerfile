@@ -2,6 +2,7 @@ FROM jackhu/docker-kettle:6.1
 
 MAINTAINER Jack Hu <hello@jackhu.top>
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV VNC_PW "vncpassword"
 
 # 安装桌面和vnc服务,删除不必要的软件和Apt缓存包列表
